@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>STICKvex Sign In</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/kaka.webp" alt="Logo" class="logo">
+    <h1>STICKvex</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="signin.html">Sign In</a>
+      <a href="customercare.html">Customer Care</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Sign In to STICKvex</h2>
+    <form onsubmit="signin(event)">
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" required><br><br>
+
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" required><br><br>
+
+      <button type="submit">Sign In</button>
+    </form>
+    <p id="error-message" style="color: red;"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 STICKvex. All rights reserved.</p>
+    <p>Customer Care: <a href="mailto:ytagonbrothers@gmail.com">ytagonbrothers@gmail.com</a></p>
+    <p>Phone: <a href="tel:8240409079">8240409079</a> | Delivery Support: <a href="tel:8910374573">8910374573</a></p>
+  </footer>
+
+  <script>
+    function signin(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorEl = document.getElementById("error-message");
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const matchedUser = users.find(user => user.email === email && user.password === password);
+
+      if (matchedUser) {
+        localStorage.setItem("signedIn", email);
+        alert("Signed in successfully!");
+        location.href = "cart.html";
+      } else {
+        errorEl.textContent = "Incorrect email or password. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>

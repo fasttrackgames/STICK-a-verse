@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Care - STICKvex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/kaka.webp" alt="Logo" class="logo">
+    <h1>STICKvex</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="signin.html">Sign In</a>
+      <a href="#" onclick="logout()">Log Out</a>
+      <a href="customercare.html">Customer Care</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-info">
+      <h2>Customer Care</h2>
+      <p>Email us at: <a href="mailto:ytagonbrothers@gmail.com">ytagonbrothers@gmail.com</a></p>
+      <p>Call: <a href="tel:8240409079">8240409079</a></p>
+      <p>Delivery Support: <a href="tel:8910374573">8910374573</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 STICKvex. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function logout() {
+      localStorage.removeItem('signedIn');
+      alert("Logged out successfully.");
+      location.href = 'signin.html';
+    }
+  </script>
+</body>
+</html>

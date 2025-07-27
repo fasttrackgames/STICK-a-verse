@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - STICKvex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Sign Up to STICKvex</h1>
+    <a href="index.html">Back to Home</a>
+  </header>
+
+  <main>
+    <form id="signup-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="signin.html">Sign In</a></p>
+  </main>
+
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username.length < 3 || password.length < 4) {
+        alert("Username must be at least 3 characters and password at least 4 characters.");
+        return;
+      }
+
+      localStorage.setItem("user", JSON.stringify({ username, password }));
+      alert("Sign up successful!");
+      window.location.href = "signin.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subscribe - STICKvex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/kaka.webp" alt="Logo" class="logo">
+    <h1>STICKvex</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="signin.html">Sign In</a>
+      <a href="subscribe.html">Subscribe</a>
+      <a href="customecrare.html">Customer Care</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Subscribe to STICKvex Newsletter</h2>
+    <form id="subscribeForm">
+      <label for="email">Your Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="message"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 STICKvex. All rights reserved.</p>
+    <p>Customer Care: <a href="mailto:ytagonbrothers@gmail.com">ytagonbrothers@gmail.com</a></p>
+    <p>Phone: <a href="tel:8240409079">8240409079</a> | Delivery Support: <a href="tel:8910374573">8910374573</a></p>
+  </footer>
+
+  <script>
+    document.getElementById("subscribeForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      localStorage.setItem("subscribedEmail", email);
+      document.getElementById("message").innerText = "Thanks for subscribing!";
+      document.getElementById("subscribeForm").reset();
+    });
+  </script>
+</body>
+</html>

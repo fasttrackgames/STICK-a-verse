@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STICKvex Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/kaka.webp" alt="Logo" class="logo">
+    <h1>STICKvex</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="signin.html">Sign In</a>
+      <a href="#" onclick="logout()">Log Out</a>
+      <a href="customercare.html">Customer Care</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Your Cart</h2>
+    <div id="cart-items" class="products"></div>
+    <h3 id="total-price">Total: ₹0</h3>
+    <button onclick="checkout()">Proceed to Checkout</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 STICKvex. All rights reserved.</p>
+    <p>Customer Care: <a href="mailto:ytagonbrothers@gmail.com">ytagonbrothers@gmail.com</a></p>
+    <p>Phone: <a href="tel:8240409079">8240409079</a> | Delivery Support: <a href="tel:8910374573">8910374573</a></p>
+  </footer>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function logout() {
+      localStorage.removeItem('signedIn');
+      alert("Logged out successfully.");
+      location.href = "signin.html";
+    }
+
+    function displayCart() {
+      const container = document.getElementById("cart-items");
+      const totalPriceEl = document.getElementById("total-price");
+      container.innerHTML = "";
+      let total = 0;
+      if (cartItems.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        totalPriceEl.innerText = "Total: ₹0";
+        return;
+      }
+      cartItems.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <img src="images/${item.image}" alt="${item.name}" />
+          <h3>${item.name}</h3>
+          <p>₹${item.price}</p>
+        `;
+        total += item.price;
+        container.appendChild(div);
+      });
+      totalPriceEl.innerText = `Total: ₹${total}`;
+    }
+
+    function checkout() {
+      if (!localStorage.getItem("signedIn")) {
+        alert("Please sign in to continue.");
+        location.href = "signin.html";
+        return;
+      }
+      alert("Proceeding to checkout...");
+    }
+
+    displayCart();
+  </script>
+</body>
+</html>
